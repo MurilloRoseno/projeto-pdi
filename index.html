@@ -125,11 +125,18 @@
                         var cor = imagemA.getPixelColor(w, h);
                         var rgba = Jimp.intToRGBA(cor);
 
-                        intensidadePixelsR[rgba.r] = (intensidadePixelsR[rgba.r] + 1) / tamanhoImagemPixels;
-                        intensidadePixelsG[rgba.g] = (intensidadePixelsG[rgba.g] + 1) / tamanhoImagemPixels;
-                        intensidadePixelsB[rgba.b] = (intensidadePixelsB[rgba.b] + 1) / tamanhoImagemPixels;
-                        intensidadePixelsA[rgba.a] = (intensidadePixelsA[rgba.a] + 1) / tamanhoImagemPixels;
+                        intensidadePixelsR[rgba.r] = (intensidadePixelsR[rgba.r] + 1) ;
+                        intensidadePixelsG[rgba.g] = (intensidadePixelsG[rgba.g] + 1) ;
+                        intensidadePixelsB[rgba.b] = (intensidadePixelsB[rgba.b] + 1) ;
+                        intensidadePixelsA[rgba.a] = (intensidadePixelsA[rgba.a] + 1) ;
                     }
+                }
+
+                for (var k = 0; k < 255; k++) {
+                    intensidadePixelsR[k] /= tamanhoImagemPixels;
+                    intensidadePixelsG[k] /= tamanhoImagemPixels;
+                    intensidadePixelsB[k] /= tamanhoImagemPixels;
+                    intensidadePixelsA[k] /= tamanhoImagemPixels;
                 }
                 graficosHistograma(intensidadePixelsR,intensidadePixelsG,intensidadePixelsB);
             }
